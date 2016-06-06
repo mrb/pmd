@@ -19,6 +19,12 @@ import net.sourceforge.pmd.lang.symboltable.NameOccurrence;
 
 public class CheckSkipResultRule extends AbstractJavaRule {
 
+  public CheckSkipResultRule(){
+    setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+    setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+    setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
+  }
+
     @Override
     public Object visit(ASTVariableDeclaratorId node, Object data) {
         ASTType typeNode = node.getTypeNode();

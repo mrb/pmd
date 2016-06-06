@@ -20,7 +20,10 @@ public class AvoidUsingOctalValuesRule extends AbstractJavaRule {
             );
 
     public AvoidUsingOctalValuesRule() {
-	definePropertyDescriptor(STRICT_METHODS_DESCRIPTOR);
+        definePropertyDescriptor(STRICT_METHODS_DESCRIPTOR);
+        setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+        setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+        setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
     }
 
     public Object visit(ASTLiteral node, Object data) {

@@ -24,6 +24,12 @@ import net.sourceforge.pmd.lang.java.typeresolution.TypeHelper;
  */
 public class BigIntegerInstantiationRule extends AbstractJavaRule {
 
+    public BigIntegerInstantiationRule(){
+      setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+      setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+      setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
+    }
+
     @Override
     public Object visit(ASTAllocationExpression node, Object data) {
         Node type = node.jjtGetChild(0);

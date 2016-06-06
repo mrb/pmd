@@ -38,6 +38,12 @@ public class BooleanInstantiationRule extends AbstractJavaRule {
 	 */
 	private boolean customBoolean;
 
+	public BooleanInstantiationRule(){
+		setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+		setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+		setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
+	}
+
     @Override
     public Object visit(ASTCompilationUnit decl,Object data) {
         // customBoolean needs to be reset for each new file

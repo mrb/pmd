@@ -51,6 +51,12 @@ import net.sourceforge.pmd.lang.java.rule.AbstractJavaRule;
  */
 public class DoubleCheckedLockingRule extends AbstractJavaRule {
 
+    public DoubleCheckedLockingRule(){
+      setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+      setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+      setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
+    }
+
     private List<String> volatileFields;
 
     @Override
@@ -224,7 +230,7 @@ public class DoubleCheckedLockingRule extends AbstractJavaRule {
      * Sort out if apeLeft or apeRight are variable with the provided
      * 'variableName'.
      * </p>
-     * 
+     *
      * @param variableName
      * @param apeLeft
      * @param apeRight

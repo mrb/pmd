@@ -16,6 +16,9 @@ public class AvoidMultipleUnaryOperatorsRule extends AbstractJavaRule {
 	public AvoidMultipleUnaryOperatorsRule() {
 		super.addRuleChainVisit(ASTUnaryExpression.class);
 		super.addRuleChainVisit(ASTUnaryExpressionNotPlusMinus.class);
+		setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+		setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+		setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
 	}
 
 	@Override

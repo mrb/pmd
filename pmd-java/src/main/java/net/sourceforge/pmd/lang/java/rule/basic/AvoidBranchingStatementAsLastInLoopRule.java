@@ -40,6 +40,10 @@ public class AvoidBranchingStatementAsLastInLoopRule extends AbstractJavaRule {
 	definePropertyDescriptor(CHECK_CONTINUE_LOOP_TYPES);
 	definePropertyDescriptor(CHECK_RETURN_LOOP_TYPES);
 
+	setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+	setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+	setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
+
 	addRuleChainVisit(ASTBreakStatement.class);
 	addRuleChainVisit(ASTContinueStatement.class);
 	addRuleChainVisit(ASTReturnStatement.class);

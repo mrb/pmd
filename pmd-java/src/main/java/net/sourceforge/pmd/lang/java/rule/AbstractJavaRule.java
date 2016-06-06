@@ -12,17 +12,21 @@ import net.sourceforge.pmd.lang.java.JavaLanguageModule;
 import net.sourceforge.pmd.lang.java.ast.*;
 import net.sourceforge.pmd.lang.rule.AbstractRule;
 import net.sourceforge.pmd.lang.rule.ImmutableLanguage;
+import net.sourceforge.pmd.renderers.CodeClimateRule;
 
-public abstract class AbstractJavaRule extends AbstractRule implements JavaParserVisitor, ImmutableLanguage {
+public abstract class AbstractJavaRule extends AbstractRule implements JavaParserVisitor, ImmutableLanguage, CodeClimateRule {
 
     public AbstractJavaRule() {
-	super.setLanguage(LanguageRegistry.getLanguage(JavaLanguageModule.NAME));
-	// Enable Type Resolution on Java Rules by default
-	super.setUsesTypeResolution();
+	    super.setLanguage(LanguageRegistry.getLanguage(JavaLanguageModule.NAME));
+      // Enable Type Resolution on Java Rules by default
+      super.setUsesTypeResolution();
+      definePropertyDescriptor(CODECLIMATE_CATEGORIES);
+      definePropertyDescriptor(CODECLIMATE_REMEDIATION_MULTIPLIER);
+      definePropertyDescriptor(CODECLIMATE_BLOCK_HIGHLIGHTING);
     }
 
     public void apply(List<? extends Node> nodes, RuleContext ctx) {
-	visitAll(nodes, ctx);
+	     visitAll(nodes, ctx);
     }
 
     protected void visitAll(List<? extends Node> nodes, RuleContext ctx) {

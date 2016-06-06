@@ -18,19 +18,20 @@ import net.sourceforge.pmd.lang.rule.xpath.JaxenXPathRuleQuery;
 import net.sourceforge.pmd.lang.rule.xpath.SaxonXPathRuleQuery;
 import net.sourceforge.pmd.lang.rule.xpath.XPathRuleQuery;
 import net.sourceforge.pmd.util.StringUtil;
+import net.sourceforge.pmd.renderers.CodeClimateRule;
 
 /**
  * Rule that tries to match an XPath expression against a DOM view of an AST.
  * <p/>
  * This rule needs a "xpath" property value in order to function.
  */
-public class XPathRule extends AbstractRule {
+public class XPathRule extends AbstractRule implements CodeClimateRule {
 
 	public static final StringProperty XPATH_DESCRIPTOR = new StringProperty("xpath", "XPath expression", "", 1.0f);
 	public static final EnumeratedProperty<String> VERSION_DESCRIPTOR = new EnumeratedProperty<>("version",
-			"XPath specification version", 
+			"XPath specification version",
 			new String[] { XPATH_1_0, XPATH_1_0_COMPATIBILITY, XPATH_2_0 },
-			new String[] { XPATH_1_0, XPATH_1_0_COMPATIBILITY, XPATH_2_0 }, 
+			new String[] { XPATH_1_0, XPATH_1_0_COMPATIBILITY, XPATH_2_0 },
 			0, 2.0f);
 
 	private XPathRuleQuery xpathRuleQuery;
@@ -38,21 +39,24 @@ public class XPathRule extends AbstractRule {
 	public XPathRule() {
 		definePropertyDescriptor(XPATH_DESCRIPTOR);
 		definePropertyDescriptor(VERSION_DESCRIPTOR);
+		definePropertyDescriptor(CODECLIMATE_CATEGORIES);
+		definePropertyDescriptor(CODECLIMATE_REMEDIATION_MULTIPLIER);
+		definePropertyDescriptor(CODECLIMATE_BLOCK_HIGHLIGHTING);
 	}
 
 	public XPathRule(String xPath) {
 		this();
 		setXPath(xPath);
 	}
-	
+
 	public void setXPath(String xPath) {
 		setProperty(XPathRule.XPATH_DESCRIPTOR, xPath);
 	}
-	
+
 	public void setVersion(String version) {
 		setProperty(XPathRule.VERSION_DESCRIPTOR, version);
 	}
-	
+
 	/**
 	 * Apply the rule to all nodes.
 	 */
@@ -108,7 +112,7 @@ public class XPathRule extends AbstractRule {
 	}
 
 
-	public boolean hasXPathExpression() {		
+	public boolean hasXPathExpression() {
 		String xPath = getProperty(XPATH_DESCRIPTOR);
 		return StringUtil.isNotEmpty(xPath);
 	}

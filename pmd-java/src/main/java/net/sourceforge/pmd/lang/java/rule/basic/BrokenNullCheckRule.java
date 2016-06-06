@@ -25,6 +25,12 @@ import net.sourceforge.pmd.util.StringUtil;
 
 public class BrokenNullCheckRule extends AbstractJavaRule {
 
+    public BrokenNullCheckRule(){
+      setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+      setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+      setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
+    }
+
     @Override
     public Object visit(ASTIfStatement node, Object data) {
         ASTExpression expression = (ASTExpression)node.jjtGetChild(0);

@@ -16,6 +16,12 @@ import net.sourceforge.pmd.lang.java.rule.AbstractJavaRule;
 
 public class OverrideBothEqualsAndHashcodeRule extends AbstractJavaRule {
 
+    public OverrideBothEqualsAndHashcodeRule(){
+      setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+      setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+      setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
+    }
+
     private boolean implementsComparable = false;
 
     private boolean containsEquals = false;

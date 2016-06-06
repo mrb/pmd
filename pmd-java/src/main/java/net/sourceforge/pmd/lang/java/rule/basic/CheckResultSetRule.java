@@ -28,6 +28,12 @@ import net.sourceforge.pmd.lang.java.rule.AbstractJavaRule;
  */
 public class CheckResultSetRule extends AbstractJavaRule {
 
+    public CheckResultSetRule(){
+      setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+      setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+      setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
+    }
+
     private Map<String, Node> resultSetVariables = new HashMap<>();
 
     private static Set<String> methods = new HashSet<>();

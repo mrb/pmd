@@ -40,6 +40,9 @@ public class AvoidUsingHardCodedIPRule extends AbstractJavaRule {
 
         addRuleChainVisit(ASTCompilationUnit.class);
         addRuleChainVisit(ASTLiteral.class);
+        setProperty(CODECLIMATE_CATEGORIES, new String[]{ "Style" });
+        setProperty(CODECLIMATE_REMEDIATION_MULTIPLIER, 100);
+        setProperty(CODECLIMATE_BLOCK_HIGHLIGHTING, false);
     }
 
     @Override
